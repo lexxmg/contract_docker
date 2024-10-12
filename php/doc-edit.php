@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
 $contract = '3'; // Номер договора
 $dateStart = '01.07.2024'; // Дата начала договора +3
@@ -15,10 +15,12 @@ $rub = num2str($summ)['rub']; // Склонение рубля
 $month = dateConvert($dateStart)['month'];
 $yaer = dateConvert($dateStart)['year'];
 
+$pathContrac = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_contract.docx';
+$pathStarage = $_SERVER['DOCUMENT_ROOT'] . '/storage/contract/';
 $fileName = "Договор № $contract-$month.$yaer уд-го обслуживания АТС билллинг АТС ТЕЛЕКОМПРОЕКТ.docx";
 
 // Creating the new document...
-$phpWord = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
+$phpWord = new \PhpOffice\PhpWord\TemplateProcessor($pathContrac);
 
 /* Note: any element you append to a document must reside inside of a Section. */
 //$document = $PHPWord->loadTemplate('Template.docx');
@@ -40,7 +42,7 @@ $phpWord->setValue('dateStartDate', dateConvert($dateStart)['stringDate']);
 
 $phpWord->setValue('dateEndNumDate', dateConvert($dateEnd)['numDate']);
 
-$phpWord->saveAs($fileName);
+$phpWord->saveAs($_SERVER['DOCUMENT_ROOT'] . '/storage/contract/' . $fileName);
 
 // Saving the document as OOXML file...
 // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
@@ -147,7 +149,7 @@ function ucfirst_utf8($str)
 }
 
 
-if (true) {
+if (false) {
 	// Контент-тип означающий скачивание
 	header("Content-Type: application/octet-stream");
 
@@ -164,7 +166,7 @@ if (true) {
 	readfile($fileName);
 }
 
-unlink($fileName);
+//unlink($fileName);
 
 echo $fileName;
 echo '<br>';

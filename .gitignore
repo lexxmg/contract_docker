@@ -30,3 +30,9 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+
+### Composer ###
+composer.phar
+/vendor/
+
+/storage/

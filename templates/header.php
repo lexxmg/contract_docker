@@ -23,3 +23,4 @@
 
   <body>
     <div class="fixed-container">
+      <a href="storage/contract/Договор № 3-07.2024 уд-го обслуживания АТС билллинг АТС ТЕЛЕКОМПРОЕКТ.docx">скачать</a>
