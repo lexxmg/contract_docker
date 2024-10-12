@@ -1,3 +1,5 @@
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
+
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
@@ -18,6 +20,8 @@ $yaer = dateConvert($dateStart)['year'];
 $pathContrac = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_contract.docx';
 $pathStarage = $_SERVER['DOCUMENT_ROOT'] . '/storage/contract/';
 $fileName = "Договор № $contract-$month.$yaer уд-го обслуживания АТС билллинг АТС ТЕЛЕКОМПРОЕКТ.docx";
+
+$arrFiles = preg_grep( '/^([^.])/', scandir($pathStarage) );
 
 // Creating the new document...
 $phpWord = new \PhpOffice\PhpWord\TemplateProcessor($pathContrac);
@@ -182,3 +186,5 @@ echo dateConvert($dateEnd)['stringDate'];
 echo '<br>';
 echo dateConvert($dateStart)['dayNull'];
 echo '<br>';
+
+print_r($arrFiles);
