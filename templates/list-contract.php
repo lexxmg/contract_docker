@@ -10,7 +10,7 @@ if ( isset($_POST['delete']) ) {
 <ul>
   <?php foreach ($arrFilesContract as $key => $item): ?>
     <li><?=$item?>
-      <a href="storage/contract/ . <?=$item?>">скачать</a>
+      <a href="<?='storage/contract/' . $item?>" download>скачать</a>
       <form action="" method="POST">
        
         <button name="delete" value="<?=$item?>">удалить</button>
