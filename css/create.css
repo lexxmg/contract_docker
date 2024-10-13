@@ -1,0 +1,24 @@
+.form-create {
+
+}
+
+.form-create__label {
+  display: flex;
+
+  margin: 10px 0 0 0;
+}
+
+.form-create__text {
+  display: block;
+
+  width: 300px;
+}
+
+.form-create__input {
+
+}
+
+.form-create__btn-container {
+  margin: 20px 0 0 0;
+}
+

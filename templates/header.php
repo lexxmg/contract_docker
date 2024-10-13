@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/master.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/doc-list.css">
+    <link rel="stylesheet" href="/css/create.css">
 
 
     <link rel="stylesheet" href="/lib/slick/slick-theme.css">
