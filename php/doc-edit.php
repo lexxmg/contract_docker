@@ -1,14 +1,18 @@
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
-
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
-$contract = '3'; // Номер договора
-$dateStart = '01.07.2024'; // Дата начала договора +3
-$dateEnd = '25.09.2024'; // Дата окончания договора
-$summ = 220000; // Сумма всего
-$fierstSumm = 195000; // Первая сумма к выплате
+$contract = htmlspecialchars($_POST['contract'] ?? '');
+$dateStart = htmlspecialchars($_POST['dateStart'] ?? '');
+$dateEnd = htmlspecialchars($_POST['dateEnd'] ?? '');
+$summ = htmlspecialchars($_POST['summ'] ?? '');
+$fierstSumm = htmlspecialchars($_POST['fierstSumm'] ?? '');
+
+//$contract = '3'; // Номер договора
+//$dateStart = '01.07.2024'; // Дата начала договора +3
+// $dateEnd = '25.09.2024'; // Дата окончания договора
+// $summ = 220000; // Сумма всего
+// $fierstSumm = 195000; // Первая сумма к выплате
 
 
 $fierstSummRub = num2str($fierstSumm)['rub'];
@@ -172,6 +176,11 @@ if (false) {
 
 //unlink($fileName);
 
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extra = '/';
+header("Location: http://$host/$extra");
+
 echo $fileName;
 echo '<br>';
 echo ucfirst_utf8(num2str($summ)['summ']);
@@ -188,3 +197,10 @@ echo dateConvert($dateStart)['dayNull'];
 echo '<br>';
 
 print_r($arrFiles);
+
+
+echo $host;
+echo $extra;
+echo '<br>';
+echo $uri;
+exit();

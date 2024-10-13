@@ -1,5 +1,6 @@
 <?php
 
+require $_SERVER['DOCUMENT_ROOT'] . '/src/functions.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/src/main-menu.php';
+
 $pathStarage = $_SERVER['DOCUMENT_ROOT'] . '/storage';
-$arrFilesContract = preg_grep( '/^([^.])/', scandir($pathStarage . '/contract') );
-$arrFilesAct = preg_grep( '/^([^.])/', scandir($pathStarage . '/act') );

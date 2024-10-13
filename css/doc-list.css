@@ -1,0 +1,47 @@
+.doc-list {
+  margin: 20px 0 0 0;
+}
+
+.doc-list__item {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 0 20px 0;
+}
+
+.doc-list__button-container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 170px;
+}
+
+.doc-list__link {
+  
+}
+
+.doc-list__button {
+  padding: 0;
+}
+
+.doc-list--button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 75px;
+  height: 25px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: wheat;
+
+  cursor: pointer;
+}
+
+.doc-list__item:hover {
+  background-color: gray;
+
+  color: white;
+}

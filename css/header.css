@@ -1,0 +1,61 @@
+.header {
+  width: 100%;
+
+  padding: 10px 0;
+
+  background-color: black;
+  
+  color: white;
+}
+
+.header__inner {
+  width: 1024px;
+
+  margin: 0 auto;
+}
+
+.header__menu {
+
+}
+
+.header-menu {
+  
+}
+
+.header-menu__list {
+
+}
+
+.header-menu-list {
+  display: flex;
+}
+
+.header-menu-list__item {
+  margin: 0 20px 0 0;
+}
+
+.header-menu-list__link {
+  display: block;
+
+  position: relative;
+}
+
+.header-menu-list__link:hover {
+  color: gold;
+}
+
+.header-menu-list__link--active {
+  color: gold;
+}
+
+.header-menu-list__link--active::before {
+  content: "";
+
+  position: absolute;
+  top: 20px;
+  left: 0;
+
+  width: 100%;
+ 
+  border-bottom: 1px solid gold;
+}

@@ -10,4 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip 
 
+RUN a2enmod rewrite
+RUN service apache2 restart
+
 EXPOSE 80
