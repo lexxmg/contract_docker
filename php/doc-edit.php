@@ -33,8 +33,10 @@ $month = dateConvert($dateStart)['month'];
 $yaer = dateConvert($dateStart)['year'];
 
 $pathContrac = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_contract.docx';
+$pathAct = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_act.docx';
 $pathStarage = $_SERVER['DOCUMENT_ROOT'] . '/storage/contract/';
 $fileName = "Договор № $contract-$month.$yaer уд-го обслуживания АТС билллинг АТС ТЕЛЕКОМПРОЕКТ.docx";
+$actName = 'act-test.docx';
 
 //$arrFiles = preg_grep( '/^([^.])/', scandir($pathStarage) );
 
@@ -62,6 +64,12 @@ $phpWord->setValue('dateStartDate', dateConvert($dateStart)['stringDate']);
 $phpWord->setValue('dateEndNumDate', dateConvert($dateEnd)['numDate']);
 
 $phpWord->saveAs($_SERVER['DOCUMENT_ROOT'] . '/storage/contract/' . $fileName);
+
+
+$act = new \PhpOffice\PhpWord\TemplateProcessor($pathAct);
+
+$act->setValue('summStringWithKop', ucfirst_utf8(num2str($fierstSumm)['summKop']));
+$act->saveAs($_SERVER['DOCUMENT_ROOT'] . '/storage/act/' . $actName);
 
 // Saving the document as OOXML file...
 // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
