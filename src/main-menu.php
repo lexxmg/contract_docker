@@ -7,12 +7,12 @@ $menu = [
         'sort' => 0
     ],
     [
-        'title' => 'Договор',
+        'title' => 'Скачать договор',
         'path' => '/route/list-contract/',
         'sort' => 1
     ],
     [
-        'title' => 'Акт',
+        'title' => 'Скачать акт',
         'path' => '/route/list-act/',
         'sort' => 2
     ]

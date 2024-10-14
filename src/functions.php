@@ -54,6 +54,9 @@ function getStorage(string $json)
 
 /**
  * Возвращает сумму прописью
+ * num2str(1000.23)
+ * num2str(1000)
+ * 
  * @author runcore
  * @uses morph(...)
  */
@@ -95,8 +98,14 @@ function num2str($num)
 	}
     $rub = morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]); // rub
 	//$out[] = morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]); // rub
-	//$out[] = $kop . ' ' . morph($kop, $unit[0][0], $unit[0][1], $unit[0][2]); // kop
-	return ['summ' => trim(preg_replace('/ {2,}/', ' ', join(' ', $out))), 'rub' => $rub];
+    $outKop = $out;
+	$outKop[] = $kop . ' ' . morph($kop, $unit[0][0], $unit[0][1], $unit[0][2]); // kop
+	return [
+        'summ' => trim(preg_replace('/ {2,}/', ' ', join(' ', $out))), // сумма прописью без копеек
+        'summKop' => trim(preg_replace('/ {2,}/', ' ', join(' ', $outKop))), // сумма прописью с копейками
+        'rub' => $rub,
+        'out' => $out
+    ];
 }
 
 /**
@@ -118,7 +127,7 @@ function morph($n, $f1, $f2, $f5)
 /**
  * Пареобразует дату
  * 
- * 
+ * @uses removeNull(string $str): string
  */
 function dateConvert(string $date): array
 {
