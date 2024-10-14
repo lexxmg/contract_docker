@@ -99,7 +99,7 @@ function num2str($num)
     $rub = morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]); // rub
 	//$out[] = morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]); // rub
     $outKop = $out;
-    $outKop[] = $rub = morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]);
+    $outKop[] = $rub;
 	$outKop[] = $kop . ' ' . morph($kop, $unit[0][0], $unit[0][1], $unit[0][2]); // kop
     
 	return [

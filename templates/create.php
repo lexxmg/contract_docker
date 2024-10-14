@@ -5,9 +5,7 @@ $json = getStorage($jsonContract);
 if ($json) {
   $dataContract = $json;
 } 
-print_r(num2str(1000.25)['summ']);
-echo '<br>';
-print_r(ucfirst_utf8(num2str(1000)['summKop']));
+
 ?>
 
 <h1>Создать договор</h1>
