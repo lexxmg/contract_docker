@@ -74,7 +74,7 @@ $phpWord->saveAs($_SERVER['DOCUMENT_ROOT'] . '/storage/contract/' . $fileName);
 $host  = $_SERVER['HTTP_HOST'];
 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = '/';
-header("Location: http://$host/$extra");
+header("Location: http://$host");
 
 if (false) {
 	// Контент-тип означающий скачивание
