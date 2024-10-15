@@ -32,3 +32,24 @@ $spreadsheet->getActiveSheet()->setCellValue('A17',$summ);
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->setIncludeCharts(true);
 $writer->save($saveName);
+
+
+$tableJson = getStorage($jsonAct);
+
+if ($tableJson) {
+	$tableJson[0][0]['wasUsed'] = dateConvert($dateStart)['numDate'];
+  $tableJson[0][] = [
+		'row' => 8,
+		'sort' => 3,
+		'cell' => [
+				'новая строка',
+				'шт.',
+				'17',
+				'3000',
+				'51000'
+		]
+	];
+	setStorage($tableJson, $jsonAct);
+} else {
+	setStorage($table, $jsonAct);
+}

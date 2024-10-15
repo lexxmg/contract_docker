@@ -19,6 +19,7 @@ $dataContract = [
 
 setStorage($dataContract, $jsonContract);
 
+
 //$contract = '3'; // Номер договора
 //$dateStart = '01.07.2024'; // Дата начала договора +3
 // $dateEnd = '25.09.2024'; // Дата окончания договора
@@ -82,47 +83,3 @@ $host  = $_SERVER['HTTP_HOST'];
 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = '/';
 header("Location: http://$host");
-
-if (false) {
-	// Контент-тип означающий скачивание
-	header("Content-Type: application/octet-stream");
-
-	// Размер в байтах
-	header("Accept-Ranges: bytes");
-
-	// Размер файла
-	header("Content-Length: " . filesize($fileName));
-
-	// Расположение скачиваемого файла
-	header("Content-Disposition: attachment; filename=" . $fileName);
-
-	// Прочитать файл
-	readfile($fileName);
-}
-
-//unlink($fileName);
-
-
-
-echo $fileName;
-echo '<br>';
-echo ucfirst_utf8(num2str($summ)['summ']);
-echo '<br>';
-echo $rub;
-echo '<br>';
-echo num2str($fierstSumm)['summ'];
-echo '<br>';
-echo $fierstSummRub;
-echo '<br>';
-echo dateConvert($dateEnd)['stringDate'];
-echo '<br>';
-echo dateConvert($dateStart)['dayNull'];
-echo '<br>';
-
-
-
-echo $host;
-echo $extra;
-echo '<br>';
-echo $uri;
-exit();
