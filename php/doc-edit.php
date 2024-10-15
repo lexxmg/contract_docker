@@ -30,6 +30,8 @@ $fierstSummRub = num2str($fierstSumm)['rub'];
 $rub = num2str($summ)['rub']; // Склонение рубля
 
 $month = dateConvert($dateStart)['month'];
+$monthString = dateConvert($dateStart)['stringMonth'];
+$monthStringEnd = dateConvert($dateEnd)['stringMonth'];
 $yaer = dateConvert($dateStart)['year'];
 
 $pathContrac = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_contract.docx';
@@ -55,7 +57,7 @@ $phpWord->setValue('fierstSummRub', $fierstSummRub);
 $phpWord->setValue('contract', $contract);
 
 $phpWord->setValue('dateStartDayNumNull', dateConvert($dateStart)['dayNull']);
-$phpWord->setValue('dateStartStringMonth', dateConvert($dateStart)['stringMonth']);
+$phpWord->setValue('dateStartStringMonth', $monthString);
 $phpWord->setValue('dateStartNumDate', dateConvert($dateStart)['numDate']);
 $phpWord->setValue('dateStartMonth', $month);
 $phpWord->setValue('dateStartYear', $yaer);

@@ -142,10 +142,18 @@ function dateConvert(string $date): array
         'ноября', 'декабря'
     ];
 
+		$monthRod = [
+			'январь','февраль', 'март',
+			'апрель', 'май', 'июнь', 'июль',
+			'август', 'сентябрь', 'октябрь',
+			'ноябрь', 'декабрь'
+	];
+
     return [
         'numDate' => $date,
         'stringDate' => removeNull($dateArr[0]) . ' ' . $month[removeNull($dateArr[1]) - 1] . " $dateArr[2]",
         'stringMonth' => $month[removeNull($dateArr[1]) - 1],
+				'stringMonthRod' => $monthRod[removeNull($dateArr[1]) - 1],
         'dayNull' => $dateArr[0],
         'day' => removeNull($dateArr[0]),
         'month' => $dateArr[1],
@@ -171,4 +179,15 @@ function removeNull(string $str): string
 function ucfirst_utf8($str)
 {
     return mb_substr(mb_strtoupper($str, 'utf-8'), 0, 1, 'utf-8') . mb_substr(mb_strtolower($str, 'utf-8'), 1, mb_strlen($str)-1, 'utf-8');
+}
+
+/**
+ * Заменяет последнюю букву на мягкий знак
+ * monthReplace('декабря') декабрь
+ */
+function monthReplace(string $word): string
+{
+		$count = mb_strlen($word, 'UTF-8');
+
+		return mb_substr($word, 0, $count -1, 'UTF-8') . 'ь';
 }

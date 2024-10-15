@@ -43,4 +43,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ../:/var/www/html
- 
+
+#  docker compose up
+#  docker compose up -d   // запуск в фоновом режиме
+#  docker compose donwn
