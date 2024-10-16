@@ -47,3 +47,8 @@ services:
 #  docker compose up
 #  docker compose up -d   // запуск в фоновом режиме
 #  docker compose donwn
+
+# или вот так на разных версиях Docker
+#  docker-compose up
+#  docker-compose up -d   // запуск в фоновом режиме
+#  docker-compose donwn

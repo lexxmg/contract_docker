@@ -1,4 +1,7 @@
-FROM php:8.3-apache
+#FROM php:8.3-apache
+
+# для рабочего iMac Docer 2.3.5.0   version 19.03.13-beta2
+FROM php:8.2.0-apache 
 
 WORKDIR /var/www/html
 
