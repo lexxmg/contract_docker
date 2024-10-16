@@ -17,12 +17,14 @@ $path = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_act.xlsx';
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
 
 $arrTable = getStorage($jsonAct);
-
+if ($arrTable) {
+	$arrTable = createJsonFromTable('B9', 'F15', 3, $spreadsheet, $arrTable);	
+} else {
+	$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
+}
 echo '<pre>';
-	print_r($arrTable);
+print_r($arrTable);
 echo '</pre>';
-
-$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
 
 setStorage($arrTable, $jsonAct);
 
@@ -37,14 +39,12 @@ echo '</pre>';
  * Создает JSON из таблицы
  * 
  */
-function createJsonFromTable(string $corStart, string $corEnd, int $set, object $spreadsheet): array
+function createJsonFromTable(string $corStart, string $corEnd, int $set, object $spreadsheet, array $tableJson = []): array
 {
 	$abc = array(
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
 		'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 	);
-
-	$tableJson = [];
 
 	$corStartLetter = $corStart[0];
 	$corEndLetter = $corEnd[0];
@@ -56,11 +56,11 @@ function createJsonFromTable(string $corStart, string $corEnd, int $set, object 
 	for ($i=0; $i < ($corEndNum + 1) - $corStartNum; $i++) { 
 		$tableJson[$set]['wasUsed'] = 'did not use';
 		$tableJson[$set]['data'][$i]['row'] = $i + 1;
-		$tableJson[$set]['data'][$i]['sort'] = $i + 1;
+		$tableJson[$set]['data'][$i]['sort'] = $i;
 
 		foreach ($abc as $key => $letter) {
 			if ($letter >= $corStartLetter) {
-				$tableJson[$set]['data'][$i]['cell'][$key] = $spreadsheet->getActiveSheet()->getCell($letter . $i + $corStartNum)->getCalculatedValue();
+				$tableJson[$set]['data'][$i]['cell'][$key - 1] = $spreadsheet->getActiveSheet()->getCell($letter . $i + $corStartNum)->getCalculatedValue();
 			}
 
 			if ($letter === $corEndLetter) {
