@@ -41,10 +41,10 @@ $set = 0;
 </form>
 
 <div class="form-create__form-wraper">
-  <span><?=$table[$set][0]['wasUsed']?></span>
+  <span><?=$table[$set]['wasUsed']?></span>
   <table class="form-create-table">
     <tbody class="form-create-table__tbody">
-      <?php foreach ($table[$set] as $key => $value): ?>
+      <?php foreach ($table[$set]['data'] as $key => $value): ?>
         <?php if ($value['row'] === 1): ?>
           <thead class="form-create-table__thead">
             <?php foreach ($value['cell'] as $key => $cell): ?>

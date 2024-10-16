@@ -16,39 +16,28 @@ $path = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_act.xlsx';
 // $spreadsheet = $reader->load($path);
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
 
+$arrTable = getStorage($jsonAct);
+
 echo '<pre>';
-	print_r(createJsonFromTable('A10', 'F17', $spreadsheet));
+	print_r($arrTable);
 echo '</pre>';
 
-setStorage(createJsonFromTable('A9', 'F17', $spreadsheet), $jsonAct);
+$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
 
-if (false) {
-	$tableJson = getStorage($jsonAct);
+setStorage($arrTable, $jsonAct);
 
-	if ($tableJson) {
-		$tableJson[0][0]['wasUsed'] = dateConvert('01.01.2024')['numDate'];
-		$tableJson[0][] = [
-			'row' => 8,
-			'sort' => 3,
-			'cell' => [
-					'новая строка',
-					'шт.',
-					'17',
-					'3000',
-					'51000'
-			]
-		];
-		setStorage($tableJson, $jsonAct);
-	} else {
-		setStorage($table, $jsonAct);
-	}
-}
+
+echo '<pre>';
+	//print_r(getStorage($jsonAct));
+echo '</pre>';
+
+
 
 /**
  * Создает JSON из таблицы
  * 
  */
-function createJsonFromTable(string $corStart, string $corEnd, object $spreadsheet): array
+function createJsonFromTable(string $corStart, string $corEnd, int $set, object $spreadsheet): array
 {
 	$abc = array(
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
@@ -65,12 +54,13 @@ function createJsonFromTable(string $corStart, string $corEnd, object $spreadshe
 
 
 	for ($i=0; $i < ($corEndNum + 1) - $corStartNum; $i++) { 
+		$tableJson[$set]['wasUsed'] = 'did not use';
+		$tableJson[$set]['data'][$i]['row'] = $i + 1;
+		$tableJson[$set]['data'][$i]['sort'] = $i + 1;
+
 		foreach ($abc as $key => $letter) {
 			if ($letter >= $corStartLetter) {
-				$tableJson[0][$i]['wasUsed'] = 'did not use';
-				$tableJson[0][$i]['row'] = $i + 1;
-				$tableJson[0][$i]['sort'] = $i + 1;
-				$tableJson[0][$i]['cell'][$key] = $spreadsheet->getActiveSheet()->getCell($letter . $i + $corStartNum)->getValue();
+				$tableJson[$set]['data'][$i]['cell'][$key] = $spreadsheet->getActiveSheet()->getCell($letter . $i + $corStartNum)->getCalculatedValue();
 			}
 
 			if ($letter === $corEndLetter) {
