@@ -35,4 +35,7 @@ Temporary Items
 composer.phar
 /vendor/
 
-/storage/
+# /storage/
+storage/data/*
+storage/contract/*
+storage/act/*
