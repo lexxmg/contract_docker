@@ -1,7 +1,7 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/src/core.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/core.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -16,22 +16,50 @@ $path = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_act.xlsx';
 // $spreadsheet = $reader->load($path);
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
 
+$firstCor = htmlspecialchars($_POST['firstCor'] ?? 'A1');
+$lastCor = htmlspecialchars($_POST['lastCor'] ?? 'A1');
+
 $arrTable = getStorage($jsonAct);
 if ($arrTable) {
-	$arrTable = createJsonFromTable('B9', 'F15', 3, $spreadsheet, $arrTable);	
+	//$arrTable = createJsonFromTable('D10', 'D15', 4, $spreadsheet, $arrTable);	
 } else {
-	$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
+	//$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
 }
-echo '<pre>';
-print_r($arrTable);
-echo '</pre>';
 
-setStorage($arrTable, $jsonAct);
+if (isset($_POST['getTable'])) {
+	$newTable = createJsonFromTable($firstCor, $lastCor, 1, $spreadsheet);
+}
 
+if (isset($_POST['addTable'])) {
+	if ($arrTable) {
+		$count = count($arrTable);
+		$newTable = createJsonFromTable($firstCor, $lastCor, $count, $spreadsheet, $arrTable);
+		setStorage($newTable, $jsonAct);
+	}
+}
 
-echo '<pre>';
-	//print_r(getStorage($jsonAct));
-echo '</pre>';
+if (isset($_POST['saveTable'])) {
+	$newTable = createJsonFromTable($firstCor, $lastCor, 0, $spreadsheet);
+	setStorage($newTable, $jsonAct);
+}
+
+// $arrTable = getStorage($jsonAct);
+// if ($arrTable) {
+// 	$arrTable = createJsonFromTable('D10', 'D15', 4, $spreadsheet, $arrTable);	
+// } else {
+// 	$arrTable = createJsonFromTable('B9', 'F15', 0, $spreadsheet);
+// }
+// 
+// $arrTable[0]['data'][6]['cell'][4] = 346;
+// $arrTable[1]['data'][6]['cell'][4] = 26634;
+// $arrTable[2]['data'][6]['cell'][4] = 9160;
+
+// echo '<pre>';
+// print_r($arrTable);
+// echo '</pre>';
+
+//setStorage($arrTable, $jsonAct);
+
 
 
 
@@ -55,6 +83,8 @@ function createJsonFromTable(string $corStart, string $corEnd, int $set, object 
 
 	for ($i=0; $i < ($corEndNum + 1) - $corStartNum; $i++) { 
 		$tableJson[$set]['wasUsed'] = 'did not use';
+		$tableJson[$set]['firstCor'] = $corStart;
+    $tableJson[$set]['lastCor'] = $corEnd;
 		$tableJson[$set]['data'][$i]['row'] = $i + 1;
 		$tableJson[$set]['data'][$i]['sort'] = $i;
 

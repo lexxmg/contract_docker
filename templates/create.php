@@ -8,17 +8,18 @@ if ($json) {
 
 $tableJson = getStorage($jsonAct);
 
-if ($tableJson) {
-  $table = $tableJson;
-}
+// if ($tableJson) {
+//   $table = $tableJson;
+// }
 
-$set = 0;
+$set = htmlspecialchars($_POST['set'] ?? '0');
 
 ?>
 
 <h1>Создать договор</h1>
 
 <form class="form-create" action="/php/doc-edit.php" method="POST">
+  <input type="text" name="set" value="<?=$set?>">
   <label class="form-create__label"><span class="form-create__text">Номер договора</span>
     <input class="form-create__input" type="text" name="contract" value="<?=$dataContract['contract']?>">
   </label>  
@@ -40,25 +41,20 @@ $set = 0;
   </div>
 </form>
 
-<div class="form-create__form-wraper">
-  <span><?=$table[$set]['wasUsed']?></span>
-  <table class="form-create-table">
-    <tbody class="form-create-table__tbody">
-      <?php foreach ($table[$set]['data'] as $key => $value): ?>
-        <?php if ($value['row'] === 1): ?>
-          <thead class="form-create-table__thead">
-            <?php foreach ($value['cell'] as $key => $cell): ?>
-              <th class="form-create-table__th <?php echo $key === 0 ? 'form-create-table__td--fix-size' : ''?>"><?=$cell?></th>
-            <?php endforeach; ?>
-          </thead>
-        <?php else: ?>
-          <tr class="form-create-table__tr">
-            <?php foreach ($value['cell'] as $key => $cell): ?>
-              <td class="form-create-table__td <?php echo $key !== 0 ? 'form-create-table__td--text-centr' : ''?>"><?=$cell?></td>
-            <?php endforeach; ?>
-          </tr>  
-        <?php endif; ?>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
+<?php if ($tableJson): ?>
+  <div class="form-create__form-wraper">
+    <form action="" method="POST">
+      <select name="set">
+        <?php foreach ($tableJson as $key => $value): ?>
+          <option value="<?=$key?>"><?=$value['wasUsed']?></option>
+        <?php endforeach; ?>
+      </select>
+
+      <button>применить</button>
+    </form>
+
+    <span><?=$tableJson[$set]['wasUsed']?></span>
+    
+    <?=showTable($tableJson, $set)?>
+  </div>
+<?php endif; ?>

@@ -15,5 +15,10 @@ $menu = [
         'title' => 'Скачать акт',
         'path' => '/route/list-act/',
         'sort' => 2
+    ],
+    [
+        'title' => 'Редактировать таблицу',
+        'path' => '/route/edit-table/',
+        'sort' => 3
     ]
 ];

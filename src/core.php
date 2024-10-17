@@ -2,8 +2,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/main-menu.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/functions.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/table.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/table.php';
+//require_once $_SERVER['DOCUMENT_ROOT'] . '/src/table.php';
+
 
 $pathStarage = $_SERVER['DOCUMENT_ROOT'] . '/storage';
 $jsonContract = $_SERVER['DOCUMENT_ROOT'] . '/storage/data/contract.json';

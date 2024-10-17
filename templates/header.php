@@ -1,4 +1,4 @@
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/src/core.php' ) ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/core.php') ?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/doc-list.css">
     <link rel="stylesheet" href="/css/create.css">
+    <link rel="stylesheet" href="/css/edit-table.css">
 
 
     <link rel="stylesheet" href="/lib/slick/slick-theme.css">

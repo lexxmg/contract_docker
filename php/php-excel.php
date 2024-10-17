@@ -10,6 +10,7 @@ $start = dateConvert($dateStart)['stringDate'];
 $end = dateConvert($dateEnd)['stringDate'];
 $summ = ucfirst_utf8(num2str($summ)['summKop']);
 $monthRod = dateConvert($dateEnd)['stringMonthRod'];
+$set = htmlspecialchars($_POST['set'] ?? '0');
 
 $path = $_SERVER['DOCUMENT_ROOT'] . '/doc-templates/template_act.xlsx';
 $saveName = $_SERVER['DOCUMENT_ROOT'] . "/storage/act/Акт № $contract АТС ТЕЛЕКОМПРОЕКТ $monthRod $yaer.xlsx";
@@ -37,8 +38,8 @@ $writer->save($saveName);
 $tableJson = getStorage($jsonAct);
 
 if ($tableJson) {
-	$tableJson[0][0]['wasUsed'] = dateConvert($dateStart)['numDate'];
-  $tableJson[0][] = [
+	$tableJson[$set]['wasUsed'] = dateConvert($dateStart)['numDate'];
+  $tableJson[$set]['data'][6] = [
 		'row' => 8,
 		'sort' => 3,
 		'cell' => [
@@ -46,7 +47,7 @@ if ($tableJson) {
 				'шт.',
 				'17',
 				'3000',
-				'51000'
+				'51'
 		]
 	];
 	setStorage($tableJson, $jsonAct);

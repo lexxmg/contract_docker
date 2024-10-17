@@ -10,6 +10,17 @@ function showMenu(array $array, string $key, $sort, $className = '')
 }
 
 /**
+ * Вывод таблицы
+ * 
+ * showTable($table, 0) выведет таблицу с первым индекскм в массиве
+ * showTable($table, 1) выведет таблицу с вторым индекскм в массиве
+ */
+function showTable(array $arrayTable, int $set = 0)
+{
+		require($_SERVER['DOCUMENT_ROOT'] . '/templates/table.php');
+}
+
+/**
 * Сортировка массива
 * arraySort($array, 'sort_key', SORT_ASC) по возрастанию
 * arraySort($array, 'sort_key', SORT_DESC) по убыванию
