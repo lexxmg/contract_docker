@@ -46,7 +46,9 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
     <form action="" method="POST">
       <select name="set">
         <?php foreach ($tableJson as $key => $value): ?>
-          <option value="<?=$key?>"><?=$value['wasUsed']?></option>
+          <option value="<?=$key?>" <?=($key == $set) ? 'selected' : ''?>>
+            <?=$value['wasUsed']?>
+          </option>
         <?php endforeach; ?>
       </select>
 
