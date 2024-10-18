@@ -1,7 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/core.php';
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/core.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -19,7 +19,18 @@ $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
 $firstCor = htmlspecialchars($_POST['firstCor'] ?? 'A1');
 $lastCor = htmlspecialchars($_POST['lastCor'] ?? 'A1');
 
+//print_r($_POST);
 $arrTable = getStorage($jsonAct);
+
+if (isset($_POST['delete']))	{
+	//echo $_POST['key'];
+	unset($arrTable[$_POST['key']]);
+	$arrTable = array_values($arrTable);
+	setStorage($arrTable, $jsonAct);
+	//$arrTable = getStorage($jsonAct);
+}
+
+
 if ($arrTable) {
 	//$arrTable = createJsonFromTable('D10', 'D15', 4, $spreadsheet, $arrTable);	
 } else {
@@ -27,21 +38,24 @@ if ($arrTable) {
 }
 
 if (isset($_POST['getTable'])) {
-	$newTable = createJsonFromTable($firstCor, $lastCor, 1, $spreadsheet);
+	$newTable = createJsonFromTable($firstCor, $lastCor, 0, $spreadsheet);
+}
+
+if (isset($_POST['cencelTable'])) {
+	$newTable = null;
 }
 
 if (isset($_POST['addTable'])) {
 	if ($arrTable) {
 		$count = count($arrTable);
-		$newTable = createJsonFromTable($firstCor, $lastCor, $count, $spreadsheet, $arrTable);
-		setStorage($newTable, $jsonAct);
+		$arrTable = createJsonFromTable($firstCor, $lastCor, $count, $spreadsheet, $arrTable);
+		setStorage($arrTable, $jsonAct);
+	} else {
+		$arrTable = createJsonFromTable($firstCor, $lastCor, 0, $spreadsheet);
+		setStorage($arrTable, $jsonAct);
 	}
 }
 
-if (isset($_POST['saveTable'])) {
-	$newTable = createJsonFromTable($firstCor, $lastCor, 0, $spreadsheet);
-	setStorage($newTable, $jsonAct);
-}
 
 // $arrTable = getStorage($jsonAct);
 // if ($arrTable) {
