@@ -30,6 +30,23 @@ if (isset($_POST['delete']))	{
 	//$arrTable = getStorage($jsonAct);
 }
 
+if (isset($_POST['edit']))	{
+	$arrTable[$_POST['key']]['edit'] = true;
+	setStorage($arrTable, $jsonAct);
+}
+
+if (isset($_POST['saveEdit']))	{
+	$set = $_POST['set'];
+	foreach ($_POST as $key => $value) {
+		$arrKey = explode('_', $key);
+		if ( $arrKey[0] === 'row' ) {
+			$arrTable[$set]['data'][$arrKey[1]]['cell'] = $value;
+		}
+	}
+	$arrTable[$set]['edit'] = false;
+	setStorage($arrTable, $jsonAct);
+}
+
 
 if ($arrTable) {
 	//$arrTable = createJsonFromTable('D10', 'D15', 4, $spreadsheet, $arrTable);	
@@ -99,6 +116,7 @@ function createJsonFromTable(string $corStart, string $corEnd, int $set, object 
 		$tableJson[$set]['wasUsed'] = 'did not use';
 		$tableJson[$set]['firstCor'] = $corStart;
     $tableJson[$set]['lastCor'] = $corEnd;
+		$tableJson[$set]['edit'] = false;
 		$tableJson[$set]['data'][$i]['row'] = $i + 1;
 		$tableJson[$set]['data'][$i]['sort'] = $i;
 

@@ -5,6 +5,7 @@ $table = [
         'wasUsed' => 'did not use',
         'firstCor' => 'B9',
         'lastCor' => 'F15',
+        'edit' => false,
         'data' => [
             [
                 'row' => 1,
@@ -89,6 +90,7 @@ $table = [
         'wasUsed' => '16.10.2024',
         'firstCor' => 'B9',
         'lastCor' => 'F15',
+        'edit' => false,
         'data' => [
             [
                 'row' => 1,

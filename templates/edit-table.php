@@ -33,6 +33,7 @@
     <form action="" method="post">
       <input type="hidden" name="key" value="<?=$key?>">
       <button name="delete">удалить</button>
+      <button name="edit">редактировать</button>
     </form>
   <?php endforeach; ?>
 <?php endif; ?>
