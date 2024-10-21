@@ -1,7 +1,7 @@
 <?php if ($arrayTable[$set]['edit']): ?>
   <form class="form-table-edit" action="" method="POST">
     <input type="hidden" name="set" value="<?=$set?>">
-    <table class="form-create-table">
+    <table class="form-create-table table-edit-js">
       <tbody class="form-create-table__tbody">
         <?php foreach ($arrayTable[$set]['data'] as $i => $value): ?>
           <?php if ($value['row'] === 1): ?>
@@ -23,8 +23,9 @@
       </tbody>
     </table>
 
-    <div class="form-table-edit__btn-container">
-      <button class="form-table-edit__btn" name="saveEdit">Сохранить</button>
+    <div class="edit-table-form__btn-container">
+      <button class="button-middle form-table-edit__btn" name="saveEdit">Сохранить</button>
+      <button class="button-middle form-table-edit__btn" name="cancelEdit">Отменить</button>
     </div>
   </form>
 <?php else: ?>

@@ -11,10 +11,10 @@ $arrFilesContract = preg_grep( '/^([^.])/', scandir($pathStarage . '/contract') 
   <?php foreach ($arrFilesContract as $key => $item): ?>
     <li class="doc-list__item"><?=$item?>
       <div class="doc-list__button-container">
-        <a class="doc-list__link doc-list--button" href="<?='/storage/contract/' . $item?>" download>скачать</a>
+        <a class="button-norm doc-list__link" href="<?='/storage/contract/' . $item?>" download>скачать</a>
 
         <form action="" method="POST">
-          <button class="doc-list__button doc-list--button"name="delete" value="<?=$item?>">удалить</button>
+          <button class="button-norm doc-list__button"name="delete" value="<?=$item?>">удалить</button>
         </form>
       </div>
     </li>

@@ -1,0 +1,48 @@
+.form-create-table {
+  border: 1px solid black;
+}
+
+.form-create-table__tbody {
+
+}
+
+.form-create-table__thead {
+
+}
+
+.form-create-table__th {
+  width: 130px;
+
+  border: 1px solid black;
+}
+
+.form-create-table__tr {
+  border: 1px solid black;
+}
+
+.form-create-table__td {
+  padding: 3px 2px;
+
+  border: 1px solid black;
+}
+
+.form-table-edit {
+
+}
+
+.form-table-edit__input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+}
+
+.form-table-edit__btn {
+  margin: 0 5px 0 0;
+}
+
+.form-table-edit__btn:last-child {
+  margin: 0;
+}

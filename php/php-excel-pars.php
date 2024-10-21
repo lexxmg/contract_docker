@@ -19,8 +19,14 @@ $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
 $firstCor = htmlspecialchars($_POST['firstCor'] ?? 'A1');
 $lastCor = htmlspecialchars($_POST['lastCor'] ?? 'A1');
 
-//print_r($_POST);
 $arrTable = getStorage($jsonAct);
+
+// print_r($_POST);
+
+if (!$arrTable) {
+	$arrTable = [];
+}
+
 
 if (isset($_POST['delete']))	{
 	//echo $_POST['key'];
@@ -47,6 +53,12 @@ if (isset($_POST['saveEdit']))	{
 	setStorage($arrTable, $jsonAct);
 }
 
+if (isset($_POST['cancelEdit']))	{
+	$set = $_POST['set'];
+
+	$arrTable[$set]['edit'] = false;
+	setStorage($arrTable, $jsonAct);
+}
 
 if ($arrTable) {
 	//$arrTable = createJsonFromTable('D10', 'D15', 4, $spreadsheet, $arrTable);	

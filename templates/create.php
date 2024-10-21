@@ -37,7 +37,7 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
   </label>
   
   <div class="form-create__btn-container">
-    <button name="send">Создать</button>
+    <button class="button-norm" name="send">Создать</button>
   </div>
 </form>
 

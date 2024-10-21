@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/table.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/doc-list.css">
     <link rel="stylesheet" href="/css/create.css">

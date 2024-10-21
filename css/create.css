@@ -26,34 +26,6 @@
   margin: 20px 0 0 0;
 }
 
-.form-create-table {
-  border: 1px solid black;
-}
-
-.form-create-table__tbody {
-
-}
-
-.form-create-table__thead {
-
-}
-
-.form-create-table__th {
-  width: 130px;
-
-  border: 1px solid black;
-}
-
-.form-create-table__tr {
-  border: 1px solid black;
-}
-
-.form-create-table__td {
-  padding: 3px 2px;
-
-  border: 1px solid black;
-}
-
 .form-create-table__td--fix-size {
   width: 450px;
 }

@@ -1,79 +1,49 @@
-/* th {
-  text-align: center;
-  font-weight: bold;
+.edit-table-container {
+  padding: 0 0 20px 0;
 }
 
-td {
-  width: 150px;
-  white-space: nowrap;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-} */
-
-.nw {
-  background-color: #999;
+.edit-table__wrapper {
+  padding: 10px 0 0 0;
 }
 
-.n {
-  background-color: #03f;
-  color: #fff;
+.edit-table-form {
+  padding: 5px 0;
 }
 
-.ne {
-  background-color: #ff6;
+.edit-table-form__input-container {
+ width: 600px;
 }
 
-.w {
-  background-color: #ff0;
+.edit-table-form__label {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 0 5px 0;
 }
 
-.c {
-  background-color: #60c;
-  color: #fff;
-}
-
-.e {
-  background-color: #09f;
-  color: #fff;
-}
-
-.sw {
-  background-color: #963;
-  color: #fff;
-}
-
-.s {
-  background-color: #f60;
-  color: #fff;
-}
-
-.se {
-  background-color: #0c3;
-  color: #fff;
-}
-
-.edit-td .edit-area {
-  border: none;
+.edit-table-form__label:last-child {
   margin: 0;
-  padding: 0;
-  display: block;
-
-  /* отключаем изменение размера мышью в Firefox */
-  resize: none;
-
-  /* удаляем обводку при фокусировке в Chrome */
-  outline: none;
-
-  /* удаляем полосу прокрутки в IE */
-  overflow: auto;
 }
 
-.edit-controls {
-  position: absolute;
+.edit-table-form__span {
+
 }
 
-.edit-td {
-  position: relative;
-  padding: 0;
+.edit-table-form__input {
+
 }
+
+.edit-table-form__btn-container {
+ display: flex;
+
+ margin: 5px 0 0 0;
+}
+
+.edit-table-form__btn {
+  margin: 0 5px 0 0;
+}
+.edit-table-form__btn:last-child {
+  margin: 0;
+}
+
+
