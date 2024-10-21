@@ -2,6 +2,7 @@
 
 const table = document.querySelector('.table-edit-js');
 const formSelect = document.querySelector('.form-create-select-js');
+const tableContainer = document.querySelector('.create-table-js');
 
 if (table) {
   const cost = table.rows[1].cells[4];
@@ -29,7 +30,29 @@ if (formSelect) {
   const select = document.querySelector('.form-create-select__select-js');
   const btnSelect = document.querySelector('.form-create-select__btn-js');
 
-  select.addEventListener('change', () => {
-   btnSelect.click();
+  // btnSelect.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   
+  // });  
+
+  select.addEventListener('change', (event) => {
+    event.preventDefault();
+    btnSelect.click();
   });
+}
+
+
+if (tableContainer) {
+  const params = new FormData(formSelect); 
+
+  fetch('php/get-json.php', {
+    method: 'POST',
+    body: params
+  })
+  .then(res => res.json())
+  .then(date => {
+    console.log(date);
+  });
+
+  tableContainer.textContent = 'Здесь должен быть запрос JSON';
 }

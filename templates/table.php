@@ -49,3 +49,5 @@
     </tbody>
   </table>
 <?php endif; ?>  
+
+<div class="create-table-js"></div>
