@@ -9,16 +9,17 @@ $dateEnd = htmlspecialchars($_POST['dateEnd'] ?? '');
 $summ = htmlspecialchars($_POST['summ'] ?? '');
 $fierstSumm = htmlspecialchars($_POST['fierstSumm'] ?? '');
 
-$dataContract = [
-	'contract' => $contract,
-	'dateStart' => $dateStart,
-	'dateEnd' => $dateEnd,
-	'summ' => $summ,
-	'fierstSumm' => $fierstSumm
-];
+if (isset($_POST['send'])) {
+	$dataContract = [
+		'contract' => $contract,
+		'dateStart' => $dateStart,
+		'dateEnd' => $dateEnd,
+		'summ' => $summ,
+		'fierstSumm' => $fierstSumm
+	];
 
-setStorage($dataContract, $jsonContract);
-
+	setStorage($dataContract, $jsonContract);
+}
 
 //$contract = '3'; // Номер договора
 //$dateStart = '01.07.2024'; // Дата начала договора +3

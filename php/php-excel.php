@@ -35,6 +35,7 @@ $spreadsheet->getActiveSheet()->setCellValue('A17',$summ);
 if ($tableJson) {
 	$tableJson[$set]['wasUsed'] = dateConvert($dateStart)['numDate'];
 
+	setStorage($tableJson, $jsonAct);
 	jsonToTable($set, $spreadsheet, $tableJson);
 }  
 
@@ -45,7 +46,7 @@ $writer->save($saveName);
 
 
 /**
- * Замисывает в таблицу из JSON
+ * Записывает в таблицу из JSON
  * 
  */
 function jsonToTable(int $set, object $spreadsheet, array $tableJson = []): bool
