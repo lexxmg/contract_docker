@@ -1,6 +1,7 @@
 'use strict';
 
 const table = document.querySelector('.table-edit-js');
+const formSelect = document.querySelector('.form-create-select-js');
 
 if (table) {
   const cost = table.rows[1].cells[4];
@@ -21,5 +22,14 @@ if (table) {
       result += +value;
     }
     table.rows[7].cells[4].firstElementChild.value = result;
+  });
+}
+
+if (formSelect) {
+  const select = document.querySelector('.form-create-select__select-js');
+  const btnSelect = document.querySelector('.form-create-select__btn-js');
+
+  select.addEventListener('change', () => {
+   btnSelect.click();
   });
 }

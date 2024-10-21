@@ -43,16 +43,16 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
 
 <?php if ($tableJson): ?>
   <div class="form-create__form-wraper">
-    <form action="" method="POST">
-      <select name="set">
+    <form class="form-create-select form-create-select-js" action="" method="POST">
+      <select class="form-create-select__select form-create-select__select-js" name="set">
         <?php foreach ($tableJson as $key => $value): ?>
-          <option value="<?=$key?>" <?=($key == $set) ? 'selected' : ''?>>
+          <option class="form-create-select__select" value="<?=$key?>" <?=($key == $set) ? 'selected' : ''?>>
             <?=$value['wasUsed']?>
           </option>
         <?php endforeach; ?>
       </select>
 
-      <button>применить</button>
+      <button class="button-norm form-create-select__btn form-create-select__btn-js">применить</button>
     </form>
 
     <span><?=$tableJson[$set]['wasUsed']?></span>
