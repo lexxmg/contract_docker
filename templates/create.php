@@ -18,7 +18,7 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
 
 <h1>Создать договор</h1>
 
-<form class="form-create" action="/php/doc-edit.php" method="POST">
+<form class="form-create form-create-js" action="/php/doc-edit.php" method="POST">
   <input type="text" name="set" value="<?=$set?>">
   <label class="form-create__label"><span class="form-create__text">Номер договора</span>
     <input class="form-create__input" type="text" name="contract" value="<?=$dataContract['contract']?>">
@@ -60,3 +60,5 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
     <?=showTable($tableJson, $set)?>
   </div>
 <?php endif; ?>
+
+<div class="create-table-js"></div>

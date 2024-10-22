@@ -4,6 +4,7 @@ const table = document.querySelector('.table-edit-js');
 const formSelect = document.querySelector('.form-create-select-js');
 const tableContainer = document.querySelector('.create-table-js');
 
+
 if (table) {
   const cost = table.rows[1].cells[4];
 
@@ -28,31 +29,75 @@ if (table) {
 
 if (formSelect) {
   const select = document.querySelector('.form-create-select__select-js');
-  const btnSelect = document.querySelector('.form-create-select__btn-js');
+  const formContract = document.querySelector('.form-create-js');
 
-  // btnSelect.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   
-  // });  
-
+  
+  getJson('php/get-json.php', formSelect)
+    .then(res => {
+      createTable(res, tableContainer);
+    });
+  
+  
   select.addEventListener('change', (event) => {
-    event.preventDefault();
-    btnSelect.click();
+    formContract.set.value = event.target.value;
+    
+    getJson('php/get-json.php', formSelect)
+    .then(res => {
+      createTable(res, tableContainer);
+    });
   });
 }
 
 
-if (tableContainer) {
-  const params = new FormData(formSelect); 
 
-  fetch('php/get-json.php', {
+function getJson(url, form) {
+  const params = new FormData(form); 
+
+  return fetch(url, {
     method: 'POST',
     body: params
   })
   .then(res => res.json())
-  .then(date => {
-    console.log(date);
-  });
+  .then(data => data);
+}
 
-  tableContainer.textContent = 'Здесь должен быть запрос JSON';
+function createTable(arrTable, wrapper) {
+  const table = document.createElement('table'),
+        tbody = document.createElement('tbody');
+        
+  table.className = 'form-create-table';
+  tbody.className = 'form-create-table__tbody';
+
+  wrapper.innerHTML = '';
+  
+  
+  let thead = '';
+  let tr = '';
+  arrTable.data.forEach(row => {
+      if (row.row == 1) {
+        thead = document.createElement('thead');
+        thead.className = 'form-create-table__thead';
+        table.append(thead);
+        console.log(row.row);
+      } else {
+        tr = document.createElement('tr');
+        tr.className = 'form-create-table__tr';
+        tbody.append(tr);
+      }
+    row.cell.forEach((cell, i) => {
+      if (row.row == 1) {
+        const th = document.createElement('th');
+        th.className = i === 0 ? 'form-create-table__th form-create-table__td--fix-size' : 'form-create-table__th';
+        th.textContent = cell;
+        thead.append(th);
+      } else {
+        const td = document.createElement('td');
+        td.className = i !== 0 ? 'form-create-table__td form-create-table__td--text-centr' : 'form-create-table__td';
+        td.textContent = cell;
+        tr.append(td);
+      }
+    });
+  }); 
+  table.append(tbody);
+  wrapper.append(table);
 }
