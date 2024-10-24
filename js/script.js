@@ -35,6 +35,7 @@ if (formSelect) {
   getJson('php/get-json.php', formSelect)
     .then(res => {
       createTable(res, tableContainer);
+      createTableTwo(res, tableContainer);
     });
   
   
@@ -100,4 +101,26 @@ function createTable(arrTable, wrapper) {
   }); 
   table.append(tbody);
   wrapper.append(table);
+}
+
+function createTableTwo(arrTable, wrapper) { 
+  const table = `
+    <table class="form-create-table">
+      <thead class="form-create-table__thead">
+        <tr class="form-create-table__tr">
+          ${arrTable.data[0].cell.map(item => {
+            return `<th class="form-create-table__th <?php echo $key === 0 ? 'form-create-table__td--fix-size' : '' ?>"><${item}></th>`;
+          }).join('')}
+        </tr>
+      </thead>
+
+      <tbody class="form-create-table__tbody">
+        <tr class="form-create-table__tr">
+        ${arrTable.data.slice(1).map(item => `<th class="form-create-table__th <?php echo $key === 0 ? 'form-create-table__td--fix-size' : '' ?>"><?=$cell?></th>`).join('')}
+        </tr>
+      </tbody>
+    </table>
+  `;
+
+  wrapper.innerHTML = table;
 }
