@@ -1,0 +1,27 @@
+При первом запуске необходимо создать в корне сайта директории:
+
+storage/data
+storage/contract
+storage/act
+
+Перейти в директорию docker и выполнить следующие команды:
+
+docker compose run composer install --ignore-platform-reqs
+
+Или 
+
+docker-compose run composer install --ignore-platform-reqs
+
+Для более старых версий Docker
+
+
+Запустить сервер:
+
+docker compose up
+docker compose up -d // запуск в фоновом режиме
+
+Остановить:
+
+docker compose down
+
+Сервер доступен по адресу: http://localhost:3000
