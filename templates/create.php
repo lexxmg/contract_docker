@@ -12,14 +12,14 @@ $tableJson = getStorage($jsonAct);
 //   $table = $tableJson;
 // }
 
-$set = htmlspecialchars($_POST['set'] ?? '0');
+//$set = htmlspecialchars($_POST['set'] ?? '0');
 
 ?>
 
 <h1>Создать договор</h1>
 
 <form class="form-create form-create-js" action="/php/doc-edit.php" method="POST">
-  <input type="text" name="set" value="<?=$set?>">
+  <input type="text" name="set" value="0" hidden>
   <label class="form-create__label"><span class="form-create__text">Номер договора</span>
     <input class="form-create__input" type="text" name="contract" value="<?=$dataContract['contract']?>">
   </label>  
@@ -44,20 +44,18 @@ $set = htmlspecialchars($_POST['set'] ?? '0');
 <?php if ($tableJson): ?>
   <div class="form-create__form-wraper">
     <form class="form-create-select form-create-select-js" action="" method="POST">
-      <select class="form-create-select__select form-create-select__select-js" name="set">
-        <?php foreach ($tableJson as $key => $value): ?>
-          <option class="form-create-select__select" value="<?=$key?>" <?=($key == $set) ? 'selected' : ''?>>
-            <?=$value['wasUsed']?>
-          </option>
-        <?php endforeach; ?>
-      </select>
+      <div class="form-create-select__wrapper">
+        <span class="form-create-select__text">Таблица была использована:</span>
 
-      <button class="button-norm form-create-select__btn form-create-select__btn-js">применить</button>
+        <select class="form-create-select__select form-create-select__select-js" name="set">
+          <?php foreach ($tableJson as $key => $value): ?>
+            <option class="form-create-select__select" value="<?=$key?>"?>
+              <?=$value['wasUsed']?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
     </form>
-
-    <span><?=$tableJson[$set]['wasUsed']?></span>
-    
-    <?=showTable($tableJson, $set)?>
   </div>
 <?php endif; ?>
 

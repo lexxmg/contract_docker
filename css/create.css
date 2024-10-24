@@ -23,7 +23,25 @@
 }
 
 .form-create__form-wraper {
-  margin: 20px 0 0 0;
+  margin: 30px 0 10px 0;
+}
+
+.form-create-select {
+
+}
+
+.form-create-select__wrapper {
+  display: flex;
+}
+
+.form-create-select__text {
+  display: block;
+
+  margin: 0 7px 0 0 ;
+}
+
+.form-create-select__select {
+
 }
 
 .form-create-table__td--fix-size {

@@ -35,7 +35,7 @@ if (formSelect) {
   getJson('php/get-json.php', formSelect)
     .then(res => {
       createTable(res, tableContainer);
-      createTableTwo(res, tableContainer);
+      //createTableTwo(res, tableContainer);
     });
   
   
@@ -108,16 +108,26 @@ function createTableTwo(arrTable, wrapper) {
     <table class="form-create-table">
       <thead class="form-create-table__thead">
         <tr class="form-create-table__tr">
-          ${arrTable.data[0].cell.map(item => {
-            return `<th class="form-create-table__th <?php echo $key === 0 ? 'form-create-table__td--fix-size' : '' ?>"><${item}></th>`;
+          ${arrTable.data[0].cell.map((item, i) => {
+            const className = (i === 0) ? 'form-create-table__th form-create-table__td--fix-size' : 'form-create-table__th';
+            return `<th class="${className}">${item}</th>`;
           }).join('')}
         </tr>
       </thead>
 
       <tbody class="form-create-table__tbody">
-        <tr class="form-create-table__tr">
-        ${arrTable.data.slice(1).map(item => `<th class="form-create-table__th <?php echo $key === 0 ? 'form-create-table__td--fix-size' : '' ?>"><?=$cell?></th>`).join('')}
-        </tr>
+        ${arrTable.data.slice(1).map(el => {
+          return `
+            <tr class="form-create-table__tr">
+              ${el.cell.map((item, i) => {
+                const className = (i === 0) ? 'form-create-table__td' : 'form-create-table__td form-create-table__td--text-centr';
+                return `
+                  <td class="${className}">${item}</td>
+                `;
+              }).join('')}
+            </tr>
+          `;
+        }).join('')}
       </tbody>
     </table>
   `;
