@@ -41,20 +41,26 @@
 <?php if (isset($arrTable)): ?>
   <div class="edit-table-container">
     <?php foreach ($arrTable as $key => $table): ?>
-      <div class="edit-table__wrapper">
-        <?php showTable($arrTable, $key)?>
+      <div class="edit-table-container__inner-item edit-table-container-inner-item">
+        <div class="edit-table-container-inner-item__top">
+          <span class="edit-table-container-inner-item__text">Таблица была использована:</span>
+          <span class="edit-table-container-inner-item__text"><?=$table['wasUsed']?></span>          
+        </div>
+        <div class="edit-table__wrapper">
+          <?php showTable($arrTable, $key)?>
+        
+          <form action="" method="post">
+            <input type="hidden" name="key" value="<?=$key?>">
+
+            <?php if (!$table['edit']): ?>
+              <div class="edit-table-form__btn-container">
+                <button class="button-middle edit-table-form__btn edit-table-form__btn-js" name="edit">редактировать</button>
+                <button class="button-norm edit-table-form__btn" name="delete">удалить</button>
+              </div>
+            <?php endif; ?>
+          </form>
+        </div>
       </div>
-
-      <form action="" method="post">
-        <input type="hidden" name="key" value="<?=$key?>">
-
-        <?php if (!$table['edit']): ?>
-          <div class="edit-table-form__btn-container">
-            <button class="button-middle edit-table-form__btn edit-table-form__btn-js" name="edit">редактировать</button>
-            <button class="button-norm edit-table-form__btn" name="delete">удалить</button>
-          </div>
-        <?php endif; ?>
-      </form>
     <?php endforeach; ?>
   </div>
 <?php endif; ?>

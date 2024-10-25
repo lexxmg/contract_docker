@@ -1,5 +1,24 @@
 .edit-table-container {
+  margin: 20px 0 0 0;
   padding: 0 0 20px 0;
+}
+
+.edit-table-container__inner-item {
+  margin: 0 0 20px 0;
+}
+
+.edit-table-container-inner-item {
+  
+}
+
+.edit-table-container-inner-item__top {
+  display: flex;
+}
+
+.edit-table-container-inner-item__text {
+  display: block;
+
+  margin: 0 10px 0 0;
 }
 
 .edit-table__wrapper {

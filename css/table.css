@@ -65,3 +65,9 @@
 .form-create-table--edit {
   background-color: lightskyblue;
 }
+
+.edit-table__wrapper--hidden {
+  overflow: hidden;
+
+  height: 0;
+}
