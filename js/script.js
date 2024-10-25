@@ -3,10 +3,16 @@
 const table = document.querySelector('.table-edit-js');
 const formSelect = document.querySelector('.form-create-select-js');
 const tableContainer = document.querySelector('.create-table-js');
+const editTableContainer = document.querySelector('.edit-table-container');
 
 
 if (table) {
   const cost = table.rows[1].cells[4];
+
+  const scrollTop = localStorage.getItem('scrollTop');
+  if (scrollTop) {
+    window.scrollTo(0, scrollTop);
+  }
 
   table.addEventListener('keyup', (event) => {
     const target = event.target;
@@ -24,6 +30,17 @@ if (table) {
       result += +value;
     }
     table.rows[7].cells[4].firstElementChild.value = result;
+  });
+}
+
+if (editTableContainer) {
+  editTableContainer.addEventListener('click', (event) => {
+    const target = event.target;
+    
+    if (target.className === 'button-middle edit-table-form__btn edit-table-form__btn-js') {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      localStorage.setItem('scrollTop', scrollTop);
+    }
   });
 }
 

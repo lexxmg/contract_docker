@@ -1,5 +1,7 @@
 .form-create-table {
   border: 1px solid black;
+
+  border-collapse: collapse;
 }
 
 .form-create-table__tbody {
@@ -20,10 +22,21 @@
   border: 1px solid black;
 }
 
+
 .form-create-table__td {
   padding: 3px 2px;
 
   border: 1px solid black;
+}
+
+.form-create-table__td:first-child {
+  height: 51px;
+}
+
+.form-create-table__td:nth-child(3) > input {
+  color: navy;
+
+  text-align: center;
 }
 
 .form-table-edit {
@@ -37,6 +50,8 @@
   padding: 0;
 
   border: none;
+
+  background-color: transparent;
 }
 
 .form-table-edit__btn {
@@ -45,4 +60,8 @@
 
 .form-table-edit__btn:last-child {
   margin: 0;
+}
+
+.form-create-table--edit {
+  background-color: lightskyblue;
 }

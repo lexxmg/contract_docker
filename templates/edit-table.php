@@ -50,7 +50,7 @@
 
         <?php if (!$table['edit']): ?>
           <div class="edit-table-form__btn-container">
-            <button class="button-middle edit-table-form__btn" name="edit">редактировать</button>
+            <button class="button-middle edit-table-form__btn edit-table-form__btn-js" name="edit">редактировать</button>
             <button class="button-norm edit-table-form__btn" name="delete">удалить</button>
           </div>
         <?php endif; ?>

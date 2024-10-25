@@ -2,7 +2,7 @@
   <form class="form-table-edit" action="" method="POST">
     <input type="hidden" name="set" value="<?=$set?>">
 
-    <table class="form-create-table table-edit-js">
+    <table class="form-create-table form-create-table--edit table-edit-js">
       <thead class="form-create-table__thead">
         <tr class="form-create-table__tr">
           <?php foreach ($arrayTable[$set]['data'][0]['cell'] as $key => $cell): ?>
