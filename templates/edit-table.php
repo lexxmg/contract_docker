@@ -16,7 +16,7 @@
         <input class="edit-table-form__input" type="text" name="firstCor" value="<?=$newTable[0]['firstCor'] ?? 'B9'?>">
       </label>
       <label class="edit-table-form__label">
-        <span class="edit-table-form__span">Координаты таблицы нижний правый (F15):</span>
+        <span class="edit-table-form__span">Координаты таблицы нижний правый (F16):</span>
         <input class="edit-table-form__input" type="text" name="lastCor" value="<?=$newTable[0]['lastCor'] ?? 'F16'?>">
       </label>
     </div>

@@ -6,8 +6,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-$start = dateConvert($dateStart)['stringDate'];
-$end = dateConvert($dateEnd)['stringDate'];
+$start = dateConvert($dateStart)['stringDateWithNull'];
+$end = dateConvert($dateEnd)['stringDateWithNull'];
 $summ = ucfirst_utf8(num2str($summ)['summKop']);
 $monthRod = dateConvert($dateEnd)['stringMonthRod'];
 $set = htmlspecialchars($_POST['set'] ?? '0');

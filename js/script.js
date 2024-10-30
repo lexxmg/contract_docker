@@ -7,7 +7,8 @@ const editTableContainer = document.querySelector('.edit-table-container');
 
 
 if (table) {
-  const cost = table.rows[1].cells[4];
+  const rowCount = table.rows.length - 1;
+
 
   const scrollTop = localStorage.getItem('scrollTop');
   if (scrollTop) {
@@ -29,7 +30,7 @@ if (table) {
       
       result += +value;
     }
-    table.rows[7].cells[4].firstElementChild.value = result;
+    table.rows[rowCount].cells[4].firstElementChild.value = result;
   });
 }
 

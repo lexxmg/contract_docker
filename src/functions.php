@@ -163,6 +163,7 @@ function dateConvert(string $date): array
     return [
         'numDate' => $date,
         'stringDate' => removeNull($dateArr[0]) . ' ' . $month[removeNull($dateArr[1]) - 1] . " $dateArr[2]",
+				'stringDateWithNull' => $dateArr[0] . ' ' . $month[$dateArr[1] - 1] . " $dateArr[2]",
         'stringMonth' => $month[removeNull($dateArr[1]) - 1],
 				'stringMonthRod' => $monthRod[removeNull($dateArr[1]) - 1],
         'dayNull' => $dateArr[0],
