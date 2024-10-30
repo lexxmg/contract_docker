@@ -6,8 +6,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-$start = dateConvert($dateStart)['stringDateWithNull'];
-$end = dateConvert($dateEnd)['stringDateWithNull'];
+$start = dateConvert($dateStart)['stringDate'];
+$end = dateConvert($dateEnd)['stringDate'];
 $summ = ucfirst_utf8(num2str($summ)['summKop']);
 $monthRod = dateConvert($dateEnd)['stringMonthRod'];
 $set = htmlspecialchars($_POST['set'] ?? '0');
@@ -30,7 +30,7 @@ $spreadsheet->getActiveSheet()->setCellValue('A5',
 $spreadsheet->getActiveSheet()->setCellValue('A7',
 "1. Во исполнение Договора Исполнитель в период с $start года по $end года оказал Заказчику следующие услуги по удалённой настройке оборудования и программного обеспечения."
 );
-$spreadsheet->getActiveSheet()->setCellValue('A17',$summ);
+$spreadsheet->getActiveSheet()->setCellValue('A17',$summ); // A17 это ячайка для вставки суммы прописью
 
 if ($tableJson) {
 	$tableJson[$set]['wasUsed'] = dateConvert($dateStart)['numDate'];

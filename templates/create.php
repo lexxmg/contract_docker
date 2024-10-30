@@ -20,7 +20,7 @@ $tableJson = getStorage($jsonAct);
 
 <form class="form-create form-create-js" action="/php/doc-edit.php" method="POST">
   <input type="text" name="set" value="0" hidden>
-  <label class="form-create__label"><span class="form-create__text">Номер договора</span>
+  <label class="form-create__label"><span class="form-create__text">Номер договора:</span>
     <input class="form-create__input" type="text" name="contract" value="<?=$dataContract['contract']?>">
   </label>  
   <label class="form-create__label"><span class="form-create__text">Дата начала договора (01.07.2024)</span>
@@ -29,10 +29,10 @@ $tableJson = getStorage($jsonAct);
   <label class="form-create__label"><span class="form-create__text">Дата окончания договора (25.09.2024)</span>
     <input class="form-create__input" type="text" name="dateEnd" value="<?=$dataContract['dateEnd']?>">
   </label>
-  <label class="form-create__label"><span class="form-create__text">Общая сумма по договору</span>
+  <label class="form-create__label"><span class="form-create__text">Общая сумма по договору:</span>
     <input class="form-create__input" type="text" name="summ" value="<?=$dataContract['summ']?>">
   </label>
-  <label class="form-create__label"><span class="form-create__text">Сумма по завершению договора</span>
+  <label class="form-create__label"><span class="form-create__text">Первая сумма к выплате:</span>
     <input class="form-create__input" type="text" name="fierstSumm" value="<?=$dataContract['fierstSumm']?>">
   </label>
   
