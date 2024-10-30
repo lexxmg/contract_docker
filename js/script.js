@@ -104,7 +104,6 @@ function createTable(arrTable, wrapper) {
         thead = document.createElement('thead');
         thead.className = 'form-create-table__thead';
         table.append(thead);
-        console.log(row.row);
       } else {
         tr = document.createElement('tr');
         tr.className = 'form-create-table__tr';
