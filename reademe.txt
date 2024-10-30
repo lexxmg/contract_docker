@@ -26,3 +26,40 @@ docker compose up -d // запуск в фоновом режиме
 docker compose down
 
 Сервер доступен по адресу: http://localhost:3000
+
+
+
+Команды Docker:
+
+————————————————————— Контейнеры ———————————————————————
+
+Посмотреть запущенные контейнеры:
+  sudo docker ps -a
+
+Войти в запущенный контейнер:
+  sudo docker exec -it [NAMES | CONTAINER ID] /bin/sh
+  sudo docker exec -it laravel-laurent-web-1 /bin/sh
+  (выход: exet)
+
+Остановить контейнер:
+  sudo docker [NAMES | CONTAINER ID] stop
+
+Удалить контейнер или несколько сразу:
+  sudo docker rm [NAMES | CONTAINER ID]     // можно указывать только несколько первыйх символов CONTAINER ID и указывать их через пробел если нужно несколько
+  sudo docker rm d3 58 dc
+
+————————————————————————————————-———————————————————————
+
+
+————————————————————— Образы ——————————————————————————-
+
+Посмотреть образы:
+  sudo docker images
+
+Удалить образ или несколько:
+  sudo docker rmi [TAG | IMAGE ID]    // можно указывать только несколько первыйх символов IMAGE ID и указывать их через пробел если нужно несколько
+  sudo docker rmi 3c b4 93 11 
+
+Удалить все образы:
+  sudo docker rmi $(docker images -q)
+————————————————————————————————-———————————————————————
