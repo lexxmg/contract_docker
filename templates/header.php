@@ -18,12 +18,6 @@
     <link rel="stylesheet" href="/css/create.css">
     <link rel="stylesheet" href="/css/edit-table.css">
 
-
-    <link rel="stylesheet" href="/lib/slick/slick-theme.css">
-    <link rel="stylesheet" href="/lib/slick/slick.css">
-
-    <script src="/lib/jQuery/jquery-3.5.1.min.js" defer></script>
-    <script src="/lib/slick/slick.min.js" defer></script>
     <script src="/js/script.js" defer></script>
   </head>
 
